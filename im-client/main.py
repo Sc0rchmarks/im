@@ -15,16 +15,17 @@ colors = [Fore.BLUE, Fore.CYAN, Fore.GREEN, Fore.LIGHTBLACK_EX,
 client_color = Fore.LIGHTBLACK_EX
 
 seperator_token = "<SEP>"
-name = input("Enter your username: ")
 s = socket.socket()
 
     
-var1 = input(f"Is the name {name} correct? [Y|N]: ").lower()
+#var1 = input(f"Is the name {name} correct? [Y|N]: ").lower()
 while True:
+    name = input("Ebter your username: ")
+    var1 = input(f"Is the name {name} correct? [Y|N]: ").lower()
     if var1 == "y":
         break
     elif var1 == "n":
-        name = input("Enter your username: ")
+        print("\n\nInvalid Username\n\n")
     else:
          print("You must select a valid option! ")
         
@@ -56,6 +57,7 @@ def listen_for_messages():
         message = s.recv(1024).decode()
         print("\n" + message)
 
+
 # make a thread that listens for messages to this client & print them
 t = Thread(target=listen_for_messages)
 # make the thread daemon so it ends whenever the main thread ends
@@ -65,13 +67,13 @@ t.start()
 
 while True:
     # input message we want to send to the server
-    to_send = input("Enter your message >")
+    to_send = input()
     # a way to exit the program
     if to_send.lower() == 'q':
         break
     # add the datetime, name & the color of the sender
     #date_now = datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
-    to_send = f"{client_color} {name}{seperator_token}{to_send}{Fore.RESET}"
+    to_send = f"{name}{seperator_token}{to_send}"
     # finally, send the message
     s.send(to_send.encode())
 

@@ -38,19 +38,23 @@ def listen(cs):
         try:
             # keep listening for a message from `cs` socket
             msg = cs.recv(1024).decode()
+            
         except Exception as e:
             # client no longer connected
             # remove it from the set
             print(f"[!] Error: {e}")
             client_sockets.remove(cs)
         else:
+            msg = msg.replace(seperator_token, ": ")
+            print("Message recieved")
+                        
             # if we received a message, replace the <SEP> 
             # token with ": " for nice printing
-            msg = msg.replace(separator_token, ": ")
-        # iterate over all connected sockets
+            # iterate over all connected sockets
         for client_socket in client_sockets:
             # and send the message
             client_socket.send(msg.encode())
+            print("Message sent")
 while True:
     client_socket, client_address = server.accept()
     print(f"+ {client_address} connected.")
@@ -58,7 +62,7 @@ while True:
 
     t = Thread(target=listen, args=(client_socket,))
     t.daemon = True
-    t.start
+    t.start()
 
 
 
