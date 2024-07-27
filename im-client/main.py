@@ -3,6 +3,7 @@ import random
 from threading import Thread
 from datetime import datetime
 from colorama import Fore, init, Back
+import slashcommands
 
 init()
 
@@ -17,10 +18,10 @@ client_color = Fore.LIGHTBLACK_EX
 seperator_token = "<SEP>"
 s = socket.socket()
 
-    
+
 #var1 = input(f"Is the name {name} correct? [Y|N]: ").lower()
 while True:
-    name = input("Ebter your username: ")
+    name = input("Enter your username: ")
     var1 = input(f"Is the name {name} correct? [Y|N]: ").lower()
     if var1 == "y":
         break
@@ -39,7 +40,7 @@ def connect():
             print("You must use a valid port number [1-65535]")
         else:
             try:
-                int(port)
+                port = int(port)
             except:
                 print("You must specify a valid port number!")    
         try:
@@ -67,10 +68,11 @@ t.start()
 
 while True:
     # input message we want to send to the server
-    to_send = input()
+    to_send = input(srv_host + " > ")
     # a way to exit the program
-    if to_send.lower() == 'q':
-        break
+    slashcommands.listen_for_cmds(to_send)
+    #if to_send.lower() == 'q':
+       # break
     # add the datetime, name & the color of the sender
     #date_now = datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
     to_send = f"{name}{seperator_token}{to_send}"
