@@ -10,7 +10,7 @@ if not port:
     port = int(42069)
 else:
     try:        
-        int(port)
+        port = int(port)
     except:
         print("You must specify a numerical port number!")
         exit()
