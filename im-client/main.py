@@ -68,7 +68,7 @@ t.start()
 
 while True:
     # input message we want to send to the server
-    to_send = input(srv_host + " > ")
+    to_send = input("> ")
     # a way to exit the program
     slashcommands.listen_for_cmds(to_send)
     #if to_send.lower() == 'q':
