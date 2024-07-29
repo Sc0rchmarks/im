@@ -2,19 +2,19 @@ import socket
 import random
 from threading import Thread
 from datetime import datetime
-from colorama import Fore, init, Back
+#from colorama import Fore, init, Back
 import slashcommands
 
 init()
 
-colors = [Fore.BLUE, Fore.CYAN, Fore.GREEN, Fore.LIGHTBLACK_EX, 
+"""colors = [Fore.BLUE, Fore.CYAN, Fore.GREEN, Fore.LIGHTBLACK_EX, 
     Fore.LIGHTBLUE_EX, Fore.LIGHTCYAN_EX, Fore.LIGHTGREEN_EX, 
     Fore.LIGHTMAGENTA_EX, Fore.LIGHTRED_EX, Fore.LIGHTWHITE_EX, 
     Fore.LIGHTYELLOW_EX, Fore.MAGENTA, Fore.RED, Fore.WHITE, Fore.YELLOW
 ]
 
 client_color = Fore.LIGHTBLACK_EX
-
+"""
 seperator_token = "<SEP>"
 s = socket.socket()
 
