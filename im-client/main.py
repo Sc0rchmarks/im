@@ -5,7 +5,7 @@ from datetime import datetime
 #from colorama import Fore, init, Back
 import slashcommands
 
-init()
+#init()
 
 """colors = [Fore.BLUE, Fore.CYAN, Fore.GREEN, Fore.LIGHTBLACK_EX, 
     Fore.LIGHTBLUE_EX, Fore.LIGHTCYAN_EX, Fore.LIGHTGREEN_EX, 
@@ -45,6 +45,7 @@ def connect():
                 print("You must specify a valid port number!")    
         try:
             s.connect((srv_host, srv_port))
+            s.send(name.encode())
             break
         except socket.error as e:
             print(f"Socket error: {e}")
